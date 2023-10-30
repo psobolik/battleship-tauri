@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battleship</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="main_container">
+    <div id="banner">BATTLESHIP!<div class="subtitle">(Rust Backend)</div></div>
+    <div style="display: inline-grid">
+        <div style="grid-column: 1; grid-row: 1">
+            <div class="container" id="field-container">
+            </div>
+        </div>
+        <div style="grid-column: 2; grid-row: 1">
+            <div style="display: inline-grid;margin-left: 2em;">
+                <div class="container" id="status-container">
+                    <span style="grid-column: 1; grid-row: 1">Shots fired</span>
+                    <span style="grid-column: 2; grid-row: 1" id="shots_fired">?</span>
+                    <span style="grid-column: 1; grid-row: 2">Hits</span>
+                    <span style="grid-column: 2; grid-row: 2" id="shots_hit">?</span>
+                    <span style="grid-column: 1; grid-row: 3">Misses</span>
+                    <span style="grid-column: 2; grid-row: 3" id="shots_missed">?</span>
+                    <hr style="grid-column: 1/3; grid-row: 4"/>
+                </div>
+            </div>
+        </div>
+        <div style="grid-column: 1/3; grid-row: 2" id="notify" class="notify"></div>
+        <div style="grid-column: 1/3; grid-row: 3" id="win" class="win">
+            <div class="big-win">
+                YOU WIN!
+            </div>
+            <div>Click to play again!</div>
+        </div>
+    </div>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>
