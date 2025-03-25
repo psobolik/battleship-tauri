@@ -74,7 +74,7 @@ impl BattleshipEngine {
     }
 
     fn init_board(&mut self) {
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
 
         // Place the ships
         for ship in self.ships.clone() {
@@ -85,7 +85,7 @@ impl BattleshipEngine {
                     Direction::Vertical
                 };
                 let position =
-                    Position::new(rng.gen_range(0..self.rows), rng.gen_range(0..self.columns));
+                    Position::new(rng.random_range(0..self.rows), rng.random_range(0..self.columns));
                 if self.ship_will_fit(&ship, &position, &direction) {
                     self.place_ship(&ship, &position, &direction);
                     break;

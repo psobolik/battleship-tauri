@@ -1,4 +1,4 @@
-const invoke_tauri = window.__TAURI__.invoke
+const { invoke } = window.__TAURI__.core;
 
 let g_battleshipEngine;
 
@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
 })
 
 async function reset() {
-    g_battleshipEngine = await invoke_tauri('battleship_engine');
+    g_battleshipEngine = await invoke('battleship_engine');
     g_battleshipEngine.game_status.ship_statuses.sort((a, b) =>
         a.size === b.size ? a.base.name.localeCompare(b.name) : a.size - b.size
     );
@@ -161,9 +161,9 @@ function anyAfloat(gameStatus) {
 }
 
 async function takeShot(row, column) {
-    // There's no shared memory in Tauri, so we pass the Battleship Engine to the Rust code, 
+    // There's no shared memory in Tauri, so we pass the Battleship Engine to the Rust code,
     // which it modifies and returns, along with the result of the shot.
-    let result = await invoke_tauri('take_shot', { battleshipEngine: g_battleshipEngine, row: row, column: column });
+    let result = await invoke('take_shot', { battleshipEngine: g_battleshipEngine, row: row, column: column });
     g_battleshipEngine = result.battleship_engine;
     return result.ship_status;
 }
